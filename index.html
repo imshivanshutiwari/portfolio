@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivanshu Tiwari - AI & Defense Innovation Researcher</title>
+  <meta name="description"
+    content="Personal website of Shivanshu Tiwari, a researcher and technologist working in AI, defense innovation, and futuristic computing systems." />
+  <meta name="author" content="Shivanshu Tiwari" />
+
+  <meta property="og:title" content="Shivanshu Tiwari - AI & Defense Innovation" />
+  <meta property="og:description"
+    content="Postgraduate researcher and technologist working in AI, defense innovation, and futuristic computing systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ShivanshuTiwari" />
+  <meta name="twitter:image" content="/og-image.png" />
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem("theme");
+
+        // If a saved theme is explicitly 'light', clear it or force 'dark'
+        if (savedTheme === 'light') {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.classList.add("dark");
+        } else if (savedTheme) {
+          document.documentElement.classList.add(savedTheme);
+        } else {
+          // Default to dark
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

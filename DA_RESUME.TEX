@@ -1,0 +1,252 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, urlcolor=blue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\begin{center}
+    {\Huge \scshape Shivanshu Tiwari} \\ \vspace{2pt}
+    \small
+    \faEnvelope\ \href{mailto:imshivanshutiwari@gmail.com}{imshivanshutiwari@gmail.com} ~
+    \faPhone\ +91 8305014147 ~
+    \faLinkedin\ \href{https://www.linkedin.com/in/imshivanshutiwari}{linkedin.com/in/imshivanshutiwari} ~
+    \faGithub\ \href{https://github.com/imshivanshutiwari}{github.com/imshivanshutiwari}
+\end{center}
+
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\vspace{-5pt}
+\small{
+Data Analyst specializing in \textbf{customer behavior analytics, SQL-driven insights, and dashboard development}. Proven expertise processing \textbf{600+ customer records and 900+ behavioral events} to deliver \textbf{RFM segmentation, cohort retention analysis, and churn prediction models}. Skilled in building \textbf{end-to-end data pipelines} using \textbf{PostgreSQL, Python, and interactive visualization tools}. Delivered measurable business impact including \textbf{30\% congestion reduction} and \textbf{18\% accuracy improvement} through data-driven solutions.
+}
+\vspace{-8pt}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Defence Institute of Advanced Technology, Pune}{2024 - 2026}
+      {M.Tech in Modelling and Simulation}{SPGA: 8.45 (II SEM)}
+    \resumeSubheading
+      {Shri Shankaracharya Technical Campus, Durg}{August 2020 - May 2024}
+      {B.Tech Computer Science and Engineering}{CGPA: 9.01 — Distinction}
+  \resumeSubHeadingListEnd
+\vspace{-10pt}
+
+
+%-----------CORE SKILLS-----------
+\section{Core Skills}
+
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+\textbf{Data Analysis \& Business Intelligence:} & Customer Analytics, Cohort Analysis, Churn Analysis, RFM Segmentation, Customer Lifetime Value (CLV), Retention Analysis, Revenue Analytics, Trend Analysis, KPI Reporting, Funnel Analysis, Business Metrics, Statistical Analysis \\
+
+\textbf{Programming \& Querying:} & \textbf{Python}, \textbf{SQL}, \textbf{PostgreSQL}, R, JavaScript \\
+
+\textbf{Data Pipeline \& Engineering:} & ETL Workflows, Data Pipeline Development, CSV Ingestion, Data Validation, Data Cleaning, Relational Data Modeling, SQL Optimization (Views, Window Functions, Aggregations) \\
+
+\textbf{Visualization \& Dashboards:} & Dashboard Development, Data Visualization, Interactive Dashboards, Real-time Analytics, Recharts, Streamlit \\
+
+\textbf{Statistical Analysis \& Machine Learning:} & Statistical Modeling, Predictive Analytics, \textbf{scikit-learn}, K-Means Clustering, Regression, Classification, Feature Engineering \\
+
+\textbf{Tools \& Platforms:} & \textbf{Pandas}, \textbf{NumPy}, Matplotlib, Seaborn, Supabase, Jupyter, Git, Docker, VS Code \\
+
+\textbf{Additional Technical Skills:} & FastAPI, REST APIs, CNN, Transformers, YOLOv11, Geospatial Analysis \\
+\end{tabularx}
+\vspace{-5pt}
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Research Associate}{August 2025 - Present}
+      {Indian Institute of Tropical Meteorology}{Pune}
+      \resumeItemListStart
+        \resumeItem{Engineered \textbf{end-to-end data pipeline} processing \textbf{50+ GB rainfall data} across \textbf{2M+ km²} at 1km resolution, achieving \textbf{18\% accuracy improvement} and \textbf{92\% SSIM} through \textbf{ML-based super-resolution models} (CNN, Transformers, ConvLSTM) for predictive weather analytics.}
+        \resumeItem{Optimized pipeline performance from \textbf{8 hours to 45 minutes} by processing \textbf{100K+ API requests} from \textbf{500+ weather stations}; implemented \textbf{data cleaning, validation, and ETL workflows} to enable real-time forecasting.}
+      \resumeItemListEnd 
+    \resumeSubheading
+      {AI Traffic Control Intern}{January 2025 - June 2025}
+      {Korba Municipal Corporation}{Korba, Chhattisgarh}
+      \resumeItemListStart
+        \resumeItem{Analyzed traffic patterns across \textbf{15+ intersections} processing \textbf{10K+ commuter data points}, delivering \textbf{30\% congestion reduction} and \textbf{35\% throughput improvement} through \textbf{data-driven optimization} and \textbf{predictive modeling} (90\% accuracy).}
+        \resumeItem{Built \textbf{interactive Streamlit dashboard} visualizing \textbf{5K+ daily traffic metrics}, reducing report generation time by \textbf{80\%}; designed \textbf{scalable analytics infrastructure} for \textbf{50+ traffic signals} using \textbf{Python and real-time data pipelines}.}
+      \resumeItemListEnd 
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {{\textbf{Customer Analytics Platform with RFM Segmentation \& Churn Prediction} - \href{https://github.com/imshivanshutiwari/CustomerAnalyticsPlatform.git}{\textbf{Link}}}}{2026}
+          \resumeItemListStart
+            \resumeItem{Developed \textbf{customer behavior analytics platform} with \textbf{RFM segmentation}, \textbf{cohort retention analysis}, and \textbf{churn prediction models}, analyzing \textbf{600+ customer records} and \textbf{900+ behavioral events} across \textbf{300+ cities}; delivered \textbf{Customer Lifetime Value (CLV) tracking}, \textbf{funnel analysis}, and \textbf{demographic insights} using \textbf{SQL (PostgreSQL/Supabase)} and \textbf{statistical modeling}.}
+            \resumeItem{Built \textbf{end-to-end data pipeline} with \textbf{CSV ingestion, data validation, and ETL workflows}; automated \textbf{customer segmentation} into \textbf{Champions, Loyal, At-Risk, Lost} categories using \textbf{clustering algorithms}; created \textbf{interactive dashboards} (\textbf{Recharts}) for \textbf{data-driven retention and revenue optimization}.}
+          \resumeItemListEnd
+          \vspace{-12pt}
+
+      \resumeProjectHeading
+          {{\textbf{Real-Time Sales \& Revenue Analytics Platform} - \href{https://github.com/imshivanshutiwari/SalesPerformanceDashboard}{\textbf{Link}}}}{2025}
+          \resumeItemListStart
+            \resumeItem{Built \textbf{real-time revenue analytics dashboard} processing \textbf{1,000+ transactional events} to track \textbf{KPIs} (revenue, growth rate, region-wise performance) using \textbf{SQL aggregations, window functions, and materialized views} in \textbf{PostgreSQL}.}
+            \resumeItem{Designed \textbf{ETL pipeline} with \textbf{SQL-driven data transformations} to compute \textbf{day-over-day growth and trend analysis}, reducing processing overhead by \textbf{40\%} and enabling \textbf{automated reporting} for business stakeholders.}
+          \resumeItemListEnd
+          \vspace{-12pt}
+
+    \resumeSubHeadingListEnd
+\vspace{-5pt}
+
+
+%-----------RESEARCH PROJECT-----------
+\section{M.Tech Research Project}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {SAR Tunnel Detection using InSAR}{2025 -- 2026 (Ongoing)}
+    {Defence Research and Development Laboratory (DRDL), DRDO}{Hyderabad}
+    \resumeItemListStart
+      \resumeItem{Processing \textbf{150+ GB Sentinel-1 SAR data} from \textbf{19 scenes} to generate \textbf{36 interferograms}; achieved \textbf{±2.4 mm deformation sensitivity} and \textbf{94.8\% accuracy} using \textbf{SBAS-InSAR}, identifying subsidence up to \textbf{-18.7 mm} through statistical and predictive analysis.}
+      \resumeItem{Designed an end-to-end \textbf{InSAR and ML pipeline} using \textbf{SNAP, ISCE2, MintPy} (calibration, debursting, coherence masking at \textbf{0.78}) and \textbf{deep learning models} (\textbf{ConvLSTM, U-Net, SRGAN}), achieving \textbf{0.82 IoU} and \textbf{17\% error reduction}; proposing a \textbf{near–real-time monitoring framework} for \textbf{≥3 mm deformation} with predictive alerting concepts.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-16pt}
+
+
+
+
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+\vspace{-2pt}
+\resumeItemListStart
+  \resumeItem{
+    \textbf{Shivanshu Tiwari}, 
+    \textit{Mapping Cloudburst-Induced Ground Deformation using Sentinel-1 InSAR}, 
+    \textbf{SACAD-2025}, IIT Hyderabad (Peer-reviewed, Presented).
+  }
+\resumeItemListEnd
+\vspace{-10pt}
+
+
+%-----------ACHIEVEMENTS---------------
+
+\end{document}

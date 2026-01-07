@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* ============================================
+     THEME: Dark (Default)
+     Deep blue-black, professional
+  ============================================ */
+  :root {
+    --background: 224 71% 4%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 166 100% 50%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --glow-color: 221.2 83.2% 53.3%;
+    --gradient-start: 221 83% 53%;
+    --gradient-end: 166 100% 50%;
+
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 221.2 83.2% 53.3%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 27.9% 16.9%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 215 27.9% 16.9%;
+    --sidebar-ring: 221.2 83.2% 53.3%;
+  }
+
+  /* ============================================
+     THEME: Cyberpunk
+     Neon pink/cyan on deep purple-black
+  ============================================ */
+  .cyberpunk {
+    --background: 270 50% 5%;
+    --foreground: 180 100% 90%;
+
+    --card: 270 50% 8%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 270 50% 8%;
+    --popover-foreground: 180 100% 90%;
+
+    --primary: 330 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 40% 15%;
+    --secondary-foreground: 180 100% 90%;
+
+    --muted: 270 40% 15%;
+    --muted-foreground: 280 20% 60%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 270 50% 5%;
+
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 280 50% 20%;
+    --input: 280 50% 20%;
+    --ring: 330 100% 60%;
+
+    --glow-color: 330 100% 60%;
+    --gradient-start: 330 100% 60%;
+    --gradient-end: 180 100% 50%;
+
+    --sidebar-background: 270 50% 5%;
+    --sidebar-foreground: 180 100% 90%;
+    --sidebar-primary: 330 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 40% 15%;
+    --sidebar-accent-foreground: 180 100% 90%;
+    --sidebar-border: 280 50% 20%;
+    --sidebar-ring: 330 100% 60%;
+  }
+
+  /* ============================================
+     THEME: Matrix
+     Green terminal style on pure black
+  ============================================ */
+  .matrix {
+    --background: 0 0% 2%;
+    --foreground: 120 100% 50%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 120 100% 50%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 120 100% 50%;
+
+    --primary: 120 100% 45%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 120 50% 10%;
+    --secondary-foreground: 120 100% 50%;
+
+    --muted: 120 30% 10%;
+    --muted-foreground: 120 50% 40%;
+
+    --accent: 120 100% 60%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 50% 15%;
+    --input: 120 50% 15%;
+    --ring: 120 100% 50%;
+
+    --glow-color: 120 100% 50%;
+    --gradient-start: 120 100% 45%;
+    --gradient-end: 120 100% 70%;
+
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 120 100% 50%;
+    --sidebar-primary: 120 100% 45%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 120 30% 10%;
+    --sidebar-accent-foreground: 120 100% 50%;
+    --sidebar-border: 120 50% 15%;
+    --sidebar-ring: 120 100% 50%;
+  }
+
+  /* ============================================
+     THEME: Ocean
+     Deep sea blue-teal gradient
+  ============================================ */
+  .ocean {
+    --background: 210 80% 6%;
+    --foreground: 185 80% 90%;
+
+    --card: 210 70% 10%;
+    --card-foreground: 185 80% 90%;
+
+    --popover: 210 70% 10%;
+    --popover-foreground: 185 80% 90%;
+
+    --primary: 185 90% 50%;
+    --primary-foreground: 210 80% 6%;
+
+    --secondary: 210 60% 18%;
+    --secondary-foreground: 185 80% 90%;
+
+    --muted: 210 50% 15%;
+    --muted-foreground: 200 40% 55%;
+
+    --accent: 165 100% 45%;
+    --accent-foreground: 210 80% 6%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 50% 20%;
+    --input: 210 50% 20%;
+    --ring: 185 90% 50%;
+
+    --glow-color: 185 90% 50%;
+    --gradient-start: 200 90% 50%;
+    --gradient-end: 165 100% 45%;
+
+    --sidebar-background: 210 80% 6%;
+    --sidebar-foreground: 185 80% 90%;
+    --sidebar-primary: 185 90% 50%;
+    --sidebar-primary-foreground: 210 80% 6%;
+    --sidebar-accent: 210 50% 15%;
+    --sidebar-accent-foreground: 185 80% 90%;
+    --sidebar-border: 210 50% 20%;
+    --sidebar-ring: 185 90% 50%;
+  }
+
+  /* ============================================
+     THEME: Sunset
+     Warm orange-pink gradient on dark
+  ============================================ */
+  .sunset {
+    --background: 20 30% 6%;
+    --foreground: 40 100% 95%;
+
+    --card: 20 30% 10%;
+    --card-foreground: 40 100% 95%;
+
+    --popover: 20 30% 10%;
+    --popover-foreground: 40 100% 95%;
+
+    --primary: 25 100% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 40% 18%;
+    --secondary-foreground: 40 100% 95%;
+
+    --muted: 20 30% 15%;
+    --muted-foreground: 30 30% 55%;
+
+    --accent: 330 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 40% 20%;
+    --input: 20 40% 20%;
+    --ring: 25 100% 55%;
+
+    --glow-color: 25 100% 55%;
+    --gradient-start: 25 100% 55%;
+    --gradient-end: 330 80% 60%;
+
+    --sidebar-background: 20 30% 6%;
+    --sidebar-foreground: 40 100% 95%;
+    --sidebar-primary: 25 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 20 30% 15%;
+    --sidebar-accent-foreground: 40 100% 95%;
+    --sidebar-border: 20 40% 20%;
+    --sidebar-ring: 25 100% 55%;
+  }
+
+  /* ============================================
+     THEME: Aurora
+     Northern lights - purple, green, blue
+  ============================================ */
+  .aurora {
+    --background: 250 40% 6%;
+    --foreground: 180 80% 90%;
+
+    --card: 250 40% 10%;
+    --card-foreground: 180 80% 90%;
+
+    --popover: 250 40% 10%;
+    --popover-foreground: 180 80% 90%;
+
+    --primary: 280 80% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 40% 20%;
+    --secondary-foreground: 180 80% 90%;
+
+    --muted: 250 30% 18%;
+    --muted-foreground: 260 30% 55%;
+
+    --accent: 160 100% 50%;
+    --accent-foreground: 250 40% 6%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 260 40% 22%;
+    --input: 260 40% 22%;
+    --ring: 280 80% 60%;
+
+    --glow-color: 280 80% 60%;
+    --gradient-start: 280 80% 60%;
+    --gradient-end: 160 100% 50%;
+
+    --sidebar-background: 250 40% 6%;
+    --sidebar-foreground: 180 80% 90%;
+    --sidebar-primary: 280 80% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 250 30% 18%;
+    --sidebar-accent-foreground: 180 80% 90%;
+    --sidebar-border: 260 40% 22%;
+    --sidebar-ring: 280 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: linear-gradient(135deg,
+        hsl(var(--card) / 0.8) 0%,
+        hsl(var(--card) / 0.4) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow:
+      0 8px 32px hsl(var(--background) / 0.3),
+      inset 0 1px 1px hsl(var(--foreground) / 0.05);
+  }
+
+  /* Neon Glow Effect */
+  .neon-glow {
+    box-shadow:
+      0 0 5px hsl(var(--glow-color)),
+      0 0 20px hsl(var(--glow-color) / 0.5),
+      0 0 40px hsl(var(--glow-color) / 0.3);
+  }
+
+  .neon-text {
+    text-shadow:
+      0 0 5px hsl(var(--glow-color)),
+      0 0 20px hsl(var(--glow-color) / 0.7),
+      0 0 40px hsl(var(--glow-color) / 0.5);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg,
+        hsl(var(--gradient-start)) 0%,
+        hsl(var(--gradient-end)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Animated Gradient Border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg,
+        hsl(var(--gradient-start)) 0%,
+        hsl(var(--gradient-end)) 50%,
+        hsl(var(--gradient-start)) 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    background-size: 200% 200%;
+    animation: gradient-rotate 3s linear infinite;
+  }
+
+  @keyframes gradient-rotate {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Section Heading */
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold mb-6 text-foreground relative;
+  }
+
+  .section-heading::after {
+    content: '';
+    display: block;
+    width: 4rem;
+    height: 4px;
+    margin-top: 0.5rem;
+    background: linear-gradient(90deg,
+        hsl(var(--gradient-start)) 0%,
+        hsl(var(--gradient-end)) 100%);
+    border-radius: 2px;
+  }
+
+  /* Pill Badge */
+  .pill {
+    @apply px-3 py-1 text-xs rounded-full;
+  }
+
+  /* Hover Card */
+  .hover-card {
+    @apply transition-all duration-300;
+  }
+
+  .hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px hsl(var(--background) / 0.4);
+  }
+
+  /* Tech Grid Background */
+  .tech-grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Animated Dot Grid */
+  .dot-grid-bg {
+    background-image: radial-gradient(hsl(var(--primary) / 0.15) 1px,
+        transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Scanline Effect (for Matrix/Cyberpunk) */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+        transparent 0,
+        transparent 2px,
+        hsl(var(--foreground) / 0.015) 2px,
+        hsl(var(--foreground) / 0.015) 4px);
+  }
+}
+
+/* Theme-specific font overrides */
+.matrix {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cyberpunk h1,
+.cyberpunk h2,
+.cyberpunk h3 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
