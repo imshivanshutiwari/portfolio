@@ -218,11 +218,13 @@ export default function LinkedInActivitySection() {
                 <Linkedin className="w-12 h-12 mx-auto mb-4 text-[#0077B5]/50" />
                 <h3 className="text-xl font-semibold mb-2">LinkedIn Activity</h3>
                 <p className="text-muted-foreground mb-4">
-                    LinkedIn activity will appear here once synced.
+                    View my professional updates, articles, and industry insights directly on LinkedIn.
                 </p>
-                <Button variant="outline" className="gap-2">
-                    <Linkedin className="w-4 h-4" />
-                    Connect LinkedIn
+                <Button asChild variant="outline" className="gap-2">
+                    <a href="https://linkedin.com/in/imshivanshutiwari" target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="w-4 h-4" />
+                        View LinkedIn Profile
+                    </a>
                 </Button>
             </div>
         );
