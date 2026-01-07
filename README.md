@@ -6,26 +6,25 @@ A state-of-the-art personal portfolio and automated resume system designed for A
 
 ## 🛠️ System Architecture
 
-The following diagram illustrates how the portfolio dynamically parses and displays resume data from LaTeX source:
-
 ```mermaid
 graph TD
-    A[DA_RESUME.TEX] -->|Raw Import| B(LaTeX Parser Engine)
-    B -->|Balanced Brace Algorithm| C{Structured JSON}
-    C --> D[Resume Page]
-    C --> E[About Page]
-    C --> F[Skills Visualization]
+    A["DA_RESUME.TEX Source"] -->|"Raw Import (?raw)"| B("LaTeX Parser Engine")
+    B -->|"Balanced Brace Algorithm"| C{"Structured JSON Data"}
+    C --> D["Resume Page"]
+    C --> E["About Page"]
+    C --> F["Skills Visualization"]
     
-    subgraph "Frontend Layer"
-    D -->|Framer Motion| G(Animated UI)
-    E -->|Interactive Timeline| H(Visionary Design)
-    F -->|Progress Bars| I(Expertise Level)
+    subgraph "Frontend Layer (React + Framer Motion)"
+        D
+        E
+        F
     end
     
-    subgraph "Deployment"
-    G --> J[GitHub Repo]
-    J --> K[Vercel/Netlify Hosting]
+    subgraph "Deployment Pipeline"
+        G["GitHub Repository"] --> H["Vercel / Netlify"]
     end
+    
+    D & E & F --> G
 ```
 
 ## ✨ Key Features
