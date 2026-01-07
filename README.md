@@ -1,73 +1,78 @@
-# Welcome to your Lovable project
+# 🚀 Shivanshu Tiwari | AI & Defense Innovation Portfolio
 
-## Project info
+A state-of-the-art personal portfolio and automated resume system designed for AI researchers and defense technologists. This project features a unique **LaTeX-to-Web** synchronization engine, futuristic animations, and a high-performance interactive UI.
 
-**URL**: https://lovable.dev/projects/0ba07d31-f8d1-408c-8f8b-74e85efa6f35
+![Portfolio Banner](https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200)
 
-## How can I edit this code?
+## 🛠️ System Architecture
 
-There are several ways of editing your application.
+The following diagram illustrates how the portfolio dynamically parses and displays resume data from LaTeX source:
 
-**Use Lovable**
+```mermaid
+graph TD
+    A[DA_RESUME.TEX] -->|Raw Import| B(LaTeX Parser Engine)
+    B -->|Balanced Brace Algorithm| C{Structured JSON}
+    C --> D[Resume Page]
+    C --> E[About Page]
+    C --> F[Skills Visualization]
+    
+    subgraph "Frontend Layer"
+    D -->|Framer Motion| G(Animated UI)
+    E -->|Interactive Timeline| H(Visionary Design)
+    F -->|Progress Bars| I(Expertise Level)
+    end
+    
+    subgraph "Deployment"
+    G --> J[GitHub Repo]
+    J --> K[Vercel/Netlify Hosting]
+    end
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0ba07d31-f8d1-408c-8f8b-74e85efa6f35) and start prompting.
+## ✨ Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- **📄 Dynamic LaTeX Sync**: Automatically updates the web profile whenever the `DA_RESUME.TEX` file is modified. No more manual data entry.
+- **🛡️ Defense-Tech Aesthetic**: Specialized "Command Center" and "Mission Briefing" UI themes with real-time background code animations.
+- **📊 Interactive Skill Bars**: Visualized expertise levels with staggered loading animations and gradient fills.
+- **🔗 Automated Project Discovery**: Smart parser extracts GitHub links directly from LaTeX `\href` commands.
+- **📥 One-Click Export**: Visitors can download the professional LaTeX source directly from the header.
+- **📱 Responsive Mission Control**: Optimized for mobile, tablet, and desktop viewing.
 
-**Use your preferred IDE**
+## 🧰 Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Category       | Technology                           |
+| :------------- | :----------------------------------- |
+| **Framework**  | React 18 (Vite)                      |
+| **Logic**      | TypeScript                           |
+| **Styling**    | Tailwind CSS                         |
+| **Animations** | Framer Motion                        |
+| **Icons**      | Lucide React                         |
+| **Backend**    | Supabase (State Management)          |
+| **Parsing**    | Custom Regex & Brace Matching Engine |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Local Development
 
-Follow these steps:
+To run this project locally:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/imshivanshutiwari/portfolio.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to directory
+cd portfolio
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📬 Contact & Socials
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **LinkedIn**: [imshivanshutiwari](https://linkedin.com/in/imshivanshutiwari)
+- **GitHub**: [@imshivanshutiwari](https://github.com/imshivanshutiwari)
+- **Email**: imshivanshutiwari@gmail.com
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/0ba07d31-f8d1-408c-8f8b-74e85efa6f35) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Developed with ❤️ for the future of Intelligence & Defense.
