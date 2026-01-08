@@ -390,7 +390,7 @@ export function generateAchievements(achievements: Array<{
 
     let latex = `
 %-----------ACHIEVEMENTS---------------
-\\section{Achievements}
+\\section{Achievements / Publications}
 \\resumeItemListStart
 `;
 

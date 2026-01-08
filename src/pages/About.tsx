@@ -300,7 +300,7 @@ export default function About() {
             className="section-heading"
             variants={fadeInUp}
           >
-            Achievements
+            Achievements / Publications
           </motion.h2>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8"

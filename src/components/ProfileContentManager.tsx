@@ -56,7 +56,7 @@ const SECTIONS = [
     { key: 'core_competency', label: 'Core Competencies', icon: Zap, description: 'Key areas of expertise' },
     { key: 'experience', label: 'Experience', icon: Briefcase, description: 'Work experience and roles' },
     { key: 'education', label: 'Education', icon: GraduationCap, description: 'Educational background' },
-    { key: 'achievement', label: 'Achievements', icon: Trophy, description: 'Awards and accomplishments' },
+    { key: 'achievement', label: 'Achievements / Publications', icon: Trophy, description: 'Awards, accomplishments and papers' },
     { key: 'skill', label: 'Skills', icon: Code, description: 'Technical and soft skills' },
     { key: 'technology', label: 'Technologies', icon: Zap, description: 'Technologies you work with' },
 ];
