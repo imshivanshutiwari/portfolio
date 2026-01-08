@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import Preview from "./pages/Preview";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -21,7 +22,9 @@ const AppContent = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout><Home /></Layout>} />
+        {/* Preview page is the first landing page */}
+        <Route path="/" element={<Preview />} />
+        <Route path="/home" element={<Layout><Home /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/projects" element={<Layout><Projects /></Layout>} />
         <Route path="/resume" element={<Layout><Resume /></Layout>} />
