@@ -185,19 +185,13 @@ export default function About() {
                 className="text-xl md:text-2xl text-muted-foreground mb-8"
                 variants={fadeInUp}
               >
-                AI researcher, defense technologist, and visionary engineer
+                {aboutMe?.subtitle || "AI researcher, defense technologist, and visionary engineer"}
               </motion.p>
               <motion.p
                 className="text-muted-foreground mb-6"
                 variants={fadeInUp}
               >
-                I am Shivanshu Tiwari, a postgraduate researcher and technologist working at the intersection of artificial intelligence, defense innovation, and futuristic computing systems. My mission is to develop intelligent solutions that enhance defense capabilities, drive technological advancement, and contribute to a more secure future.
-              </motion.p>
-              <motion.p
-                className="text-muted-foreground mb-6"
-                variants={fadeInUp}
-              >
-                With expertise in machine learning, computer vision, and embedded systems, I focus on creating practical AI applications that can operate in demanding environments. My research aims to bridge the gap between theoretical AI advancements and real-world implementation in critical systems.
+                {aboutMe?.content || "I am Shivanshu Tiwari, a postgraduate researcher and technologist working at the intersection of artificial intelligence, defense innovation, and futuristic computing systems. My mission is to develop intelligent solutions that enhance defense capabilities, drive technological advancement, and contribute to a more secure future."}
               </motion.p>
               <motion.div
                 className="flex flex-wrap gap-4 mt-8"
@@ -264,7 +258,7 @@ export default function About() {
               <h2 className="text-2xl font-bold">My Vision</h2>
             </div>
             <p className="text-muted-foreground">
-              To pioneer the development of intelligent systems that revolutionize defense capabilities while maintaining ethical considerations and human oversight. I envision a future where AI enhances security without compromising human values.
+              {vision?.content || "To pioneer the development of intelligent systems that revolutionize defense capabilities while maintaining ethical considerations and human oversight. I envision a future where AI enhances security without compromising human values."}
             </p>
           </motion.div>
 
@@ -282,7 +276,7 @@ export default function About() {
               <h2 className="text-2xl font-bold">My Mission</h2>
             </div>
             <p className="text-muted-foreground">
-              To bridge theoretical AI research with practical applications in defense and security domains. I'm committed to creating solutions that are robust, reliable, and responsive to real-world challenges, while fostering knowledge sharing and collaboration.
+              {mission?.content || "To bridge theoretical AI research with practical applications in defense and security domains. I'm committed to creating solutions that are robust, reliable, and responsive to real-world challenges, while fostering knowledge sharing and collaboration."}
             </p>
           </motion.div>
         </motion.div>

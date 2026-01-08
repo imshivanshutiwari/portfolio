@@ -22,7 +22,9 @@ import {
     GraduationCap,
     Trophy,
     Zap,
-    Code
+    Code,
+    ArrowUp,
+    ArrowDown
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -365,6 +367,33 @@ function SectionManager({
         }
     };
 
+    const moveItem = async (item: ContentItem, direction: 'up' | 'down') => {
+        const currentIndex = items.findIndex(i => i.id === item.id);
+        const targetIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+
+        if (targetIndex < 0 || targetIndex >= items.length) return;
+
+        const targetItem = items[targetIndex];
+
+        try {
+            // Swap display_order values
+            await supabase
+                .from('profile_content')
+                .update({ display_order: targetItem.display_order })
+                .eq('id', item.id);
+
+            await supabase
+                .from('profile_content')
+                .update({ display_order: item.display_order })
+                .eq('id', targetItem.id);
+
+            toast({ title: `Moved ${direction}` });
+            fetchItems();
+        } catch (error: any) {
+            toast({ title: 'Error', description: error.message, variant: 'destructive' });
+        }
+    };
+
     const Icon = sectionConfig.icon;
 
     return (
@@ -427,7 +456,26 @@ function SectionManager({
                                             />
                                         ) : (
                                             <div className="flex items-center gap-4 p-4 border rounded-lg hover:border-brand-blue/30 transition-colors">
-                                                <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab" />
+                                                <div className="flex flex-col gap-1">
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="icon"
+                                                        className="h-6 w-6"
+                                                        onClick={() => moveItem(item, 'up')}
+                                                        disabled={items.indexOf(item) === 0}
+                                                    >
+                                                        <ArrowUp className="w-3 h-3" />
+                                                    </Button>
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="icon"
+                                                        className="h-6 w-6"
+                                                        onClick={() => moveItem(item, 'down')}
+                                                        disabled={items.indexOf(item) === items.length - 1}
+                                                    >
+                                                        <ArrowDown className="w-3 h-3" />
+                                                    </Button>
+                                                </div>
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className="font-medium truncate">{item.title}</h4>
                                                     {item.subtitle && (
