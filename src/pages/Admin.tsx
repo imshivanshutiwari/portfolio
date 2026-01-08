@@ -4,7 +4,7 @@ import AdminPanel from "@/components/AdminPanel";
 import { Shield, Lock } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Simple admin access (in production, use proper auth)
@@ -61,10 +61,10 @@ export default function Admin() {
                                     <p className="text-sm text-destructive">{error}</p>
                                 )}
                             </div>
-                            <Button onClick={handleLogin} className="w-full gap-2">
+                            <RainbowButton onClick={handleLogin} className="w-full gap-2">
                                 <Lock className="w-4 h-4" />
                                 Access Admin Panel
-                            </Button>
+                            </RainbowButton>
                         </CardContent>
                     </Card>
                 </motion.div>

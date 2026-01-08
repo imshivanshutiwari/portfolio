@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionContainer from "@/components/SectionContainer";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Input } from "@/components/ui/input";
 import { Search, Filter, Github, Loader2, Star, GitFork, ExternalLink, Calendar, Code, RefreshCw } from "lucide-react";
 import { useGitHubRepos, usePortfolioWorthyRepos, useTriggerGitHubSync, GitHubRepo } from "@/hooks/usePortfolioData";
@@ -141,19 +142,19 @@ function ProjectRepoCard({ repo }: { repo: GitHubRepo }) {
 
         <CardFooter className="pt-4 border-t border-border">
           <div className="flex gap-2 w-full">
-            <Button asChild variant="outline" size="sm" className="flex-1 gap-2">
-              <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex-1">
+              <RainbowButton className="w-full gap-2">
                 <Github className="w-4 h-4" />
                 Code
-              </a>
-            </Button>
+              </RainbowButton>
+            </a>
             {(repo.demo_url || repo.homepage) && (
-              <Button asChild variant="default" size="sm" className="flex-1 gap-2">
-                <a href={repo.demo_url || repo.homepage || '#'} target="_blank" rel="noopener noreferrer">
+              <a href={repo.demo_url || repo.homepage || '#'} target="_blank" rel="noopener noreferrer" className="flex-1">
+                <RainbowButton className="w-full gap-2">
                   <ExternalLink className="w-4 h-4" />
                   Demo
-                </a>
-              </Button>
+                </RainbowButton>
+              </a>
             )}
           </div>
         </CardFooter>
@@ -266,10 +267,10 @@ export default function Projects() {
               </motion.p>
             </div>
             <motion.div variants={fadeIn}>
-              <Button
+              <RainbowButton
                 onClick={handleSync}
                 disabled={triggerSync.isPending}
-                className="gap-2 shrink-0 bg-brand-blue hover:bg-brand-blue/90"
+                className="gap-2 shrink-0"
               >
                 {triggerSync.isPending ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -277,7 +278,7 @@ export default function Projects() {
                   <RefreshCw className="w-4 h-4" />
                 )}
                 Sync with GitHub
-              </Button>
+              </RainbowButton>
             </motion.div>
           </div>
         </motion.div>
@@ -302,22 +303,20 @@ export default function Projects() {
             />
           </div>
           <div className="flex gap-2 flex-wrap">
-            <Button
-              variant={selectedCategory === null ? "default" : "outline"}
-              size="sm"
+            <RainbowButton
+              className={selectedCategory === null ? "" : "opacity-60"}
               onClick={() => setSelectedCategory(null)}
             >
               All
-            </Button>
+            </RainbowButton>
             {categories.map(category => (
-              <Button
+              <RainbowButton
                 key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                size="sm"
+                className={selectedCategory === category ? "" : "opacity-60"}
                 onClick={() => setSelectedCategory(category === selectedCategory ? null : category)}
               >
                 {category}
-              </Button>
+              </RainbowButton>
             ))}
           </div>
         </motion.div>
@@ -355,8 +354,7 @@ export default function Projects() {
         {!isLoading && !error && repos.length > 0 && filteredRepos.length === 0 && (
           <div className="text-center py-16">
             <p className="text-muted-foreground">No projects match your search criteria.</p>
-            <Button
-              variant="outline"
+            <RainbowButton
               className="mt-4"
               onClick={() => {
                 setSearchTerm("");
@@ -364,7 +362,7 @@ export default function Projects() {
               }}
             >
               Clear Filters
-            </Button>
+            </RainbowButton>
           </div>
         )}
 

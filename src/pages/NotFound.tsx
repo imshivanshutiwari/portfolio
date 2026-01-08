@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { AlertCircle } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -26,9 +26,9 @@ const NotFound = () => {
         <p className="text-xl text-muted-foreground mb-8">
           Oops! The page you're looking for doesn't exist.
         </p>
-        <Button asChild size="lg">
-          <a href="/">Return to Homepage</a>
-        </Button>
+        <a href="/">
+          <RainbowButton>Return to Homepage</RainbowButton>
+        </a>
       </div>
     </div>
   );

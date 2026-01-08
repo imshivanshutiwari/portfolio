@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Camera, Upload, Play, Pause, RefreshCw, Box, Eye, Zap, Brain } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { RainbowButton } from '@/components/ui/rainbow-button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -38,16 +38,16 @@ const VisionDemo = () => {
   const simulateDetection = () => {
     setIsProcessing(true);
     setDetections([]);
-    
+
     let frameCount = 0;
     const startTime = Date.now();
-    
+
     const interval = setInterval(() => {
       frameCount++;
       const elapsed = (Date.now() - startTime) / 1000;
       setFps(Math.round(frameCount / elapsed));
       setProcessedFrames(frameCount);
-      
+
       // Gradually reveal detections
       if (frameCount === 5) setDetections([DEMO_DETECTIONS[0]]);
       if (frameCount === 10) setDetections([DEMO_DETECTIONS[0], DEMO_DETECTIONS[1]]);
@@ -77,7 +77,7 @@ const VisionDemo = () => {
   const drawDetections = () => {
     const canvas = canvasRef.current;
     if (!canvas || !selectedImage) return;
-    
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -86,20 +86,20 @@ const VisionDemo = () => {
       canvas.width = img.width;
       canvas.height = img.height;
       ctx.drawImage(img, 0, 0);
-      
+
       detections.forEach(det => {
         const x = (det.bbox.x / 100) * img.width;
         const y = (det.bbox.y / 100) * img.height;
         const w = (det.bbox.width / 100) * img.width;
         const h = (det.bbox.height / 100) * img.height;
-        
+
         ctx.strokeStyle = det.color;
         ctx.lineWidth = 3;
         ctx.strokeRect(x, y, w, h);
-        
+
         ctx.fillStyle = det.color;
         ctx.fillRect(x, y - 25, ctx.measureText(`${det.label} ${Math.round(det.confidence * 100)}%`).width + 10, 25);
-        
+
         ctx.fillStyle = 'white';
         ctx.font = 'bold 14px sans-serif';
         ctx.fillText(`${det.label} ${Math.round(det.confidence * 100)}%`, x + 5, y - 7);
@@ -175,7 +175,7 @@ const VisionDemo = () => {
                         <p>Upload an image to begin detection</p>
                       </div>
                     )}
-                    
+
                     {isProcessing && (
                       <div className="absolute inset-0 bg-background/50 flex items-center justify-center">
                         <div className="text-center">
@@ -194,25 +194,23 @@ const VisionDemo = () => {
                       onChange={handleImageUpload}
                       className="hidden"
                     />
-                    <Button
+                    <RainbowButton
                       onClick={() => fileInputRef.current?.click()}
-                      variant="outline"
                       className="flex-1"
                     >
                       <Upload className="h-4 w-4 mr-2" />
                       Upload Image
-                    </Button>
-                    <Button
+                    </RainbowButton>
+                    <RainbowButton
                       onClick={() => {
                         setSelectedImage('/placeholder.svg');
                         setDetections([]);
                         setProcessedFrames(0);
                       }}
-                      variant="outline"
                     >
                       Use Sample
-                    </Button>
-                    <Button
+                    </RainbowButton>
+                    <RainbowButton
                       onClick={simulateDetection}
                       disabled={!selectedImage || isProcessing}
                     >
@@ -222,7 +220,7 @@ const VisionDemo = () => {
                         <Play className="h-4 w-4 mr-2" />
                       )}
                       {isProcessing ? 'Processing' : 'Run Detection'}
-                    </Button>
+                    </RainbowButton>
                   </div>
                 </CardContent>
               </Card>

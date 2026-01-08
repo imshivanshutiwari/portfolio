@@ -142,19 +142,19 @@ export default function Home() {
                   </RainbowButton>
                 </a>
 
-                <Button asChild variant="outline" size="lg" className="gap-2">
-                  <a href="/resume">
+                <a href="/resume">
+                  <RainbowButton className="gap-2">
                     <DownloadCloud size={18} />
                     Download Resume
-                  </a>
-                </Button>
+                  </RainbowButton>
+                </a>
 
-                <Button asChild variant="secondary" size="lg" className="gap-2">
-                  <a href="/about">
+                <a href="/about">
+                  <RainbowButton className="gap-2">
                     <UserCircle size={18} />
                     About Me
-                  </a>
-                </Button>
+                  </RainbowButton>
+                </a>
               </motion.div>
 
               {/* Animated Social Icons */}
@@ -224,12 +224,12 @@ export default function Home() {
             variants={fadeInUp}
           >
             <h2 className="section-heading mb-0">Featured Projects</h2>
-            <Button asChild variant="outline">
-              <a href="/projects" className="flex items-center gap-2">
+            <a href="/projects" className="flex items-center gap-2">
+              <RainbowButton className="gap-2">
                 View All Projects
                 <ArrowRight size={16} />
-              </a>
-            </Button>
+              </RainbowButton>
+            </a>
           </motion.div>
 
           <motion.div
@@ -301,9 +301,9 @@ export default function Home() {
             Let's create intelligent solutions together.
           </motion.p>
           <motion.div variants={fadeInUp}>
-            <Button asChild size="lg">
-              <a href="/contact">Get in Touch</a>
-            </Button>
+            <a href="/contact">
+              <RainbowButton>Get in Touch</RainbowButton>
+            </a>
           </motion.div>
         </motion.div>
       </SectionContainer>

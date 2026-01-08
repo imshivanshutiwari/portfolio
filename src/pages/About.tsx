@@ -200,15 +200,15 @@ export default function About() {
                 <a href="/contact">
                   <RainbowButton>Get in Touch</RainbowButton>
                 </a>
-                <Button asChild variant="outline">
-                  <a href="/projects">View My Work</a>
-                </Button>
-                <Button asChild variant="secondary" className="gap-2">
-                  <a href="https://linkedin.com/in/imshivanshutiwari" target="_blank" rel="noopener noreferrer">
+                <a href="/projects">
+                  <RainbowButton>View My Work</RainbowButton>
+                </a>
+                <a href="https://linkedin.com/in/imshivanshutiwari" target="_blank" rel="noopener noreferrer">
+                  <RainbowButton className="gap-2">
                     <Briefcase className="w-4 h-4" />
                     LinkedIn
-                  </a>
-                </Button>
+                  </RainbowButton>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -350,9 +350,9 @@ export default function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <Button asChild>
-            <a href="/projects">Explore My Projects</a>
-          </Button>
+          <a href="/projects">
+            <RainbowButton>Explore My Projects</RainbowButton>
+          </a>
         </motion.div>
       </SectionContainer>
     </>
