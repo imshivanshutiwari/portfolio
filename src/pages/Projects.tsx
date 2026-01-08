@@ -4,7 +4,7 @@ import SectionContainer from "@/components/SectionContainer";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
-import { Input } from "@/components/ui/input";
+import { AnimatedSearchBar } from "@/components/ui/animated-glowing-search-bar";
 import { Search, Filter, Github, Loader2, Star, GitFork, ExternalLink, Calendar, Code, RefreshCw } from "lucide-react";
 import { useGitHubRepos, usePortfolioWorthyRepos, useTriggerGitHubSync, GitHubRepo } from "@/hooks/usePortfolioData";
 import { Badge } from "@/components/ui/badge";
@@ -279,13 +279,11 @@ export default function Projects() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search projects by name, description, or tech..."
-              className="pl-10"
+          <div className="flex-1 flex justify-center">
+            <AnimatedSearchBar
+              placeholder="Search projects..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={setSearchTerm}
             />
           </div>
           <div className="flex gap-2 flex-wrap">

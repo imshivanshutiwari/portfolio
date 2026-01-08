@@ -109,6 +109,10 @@ export default {
 					"0%": { "background-position": "0%" },
 					"100%": { "background-position": "200%" },
 				},
+				'spin-slow': {
+					'0%': { transform: 'translate(-50%, -50%) rotate(0deg)' },
+					'100%': { transform: 'translate(-50%, -50%) rotate(360deg)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -117,6 +121,7 @@ export default {
 				'fade-out': 'fade-out 0.5s ease-out forwards',
 				'pulse-gentle': 'pulse-gentle 3s infinite',
 				rainbow: "rainbow var(--speed, 2s) infinite linear",
+				'spin-slow': 'spin-slow 4s linear infinite',
 			}
 		}
 	},
