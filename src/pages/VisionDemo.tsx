@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Camera, Upload, Play, Pause, RefreshCw, Box, Eye, Zap, Brain } from 'lucide-react';
 import { RainbowButton } from '@/components/ui/rainbow-button';
+import { SpotlightCard } from '@/components/ui/spotlight-card';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';

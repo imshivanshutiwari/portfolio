@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionContainer from "@/components/SectionContainer";
 import { Button } from "@/components/ui/button";
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Input } from "@/components/ui/input";
 import { Search, Filter, Github, Loader2, Star, GitFork, ExternalLink, Calendar, Code, RefreshCw } from "lucide-react";
 import { useGitHubRepos, usePortfolioWorthyRepos, useTriggerGitHubSync, GitHubRepo } from "@/hooks/usePortfolioData";
@@ -47,118 +48,103 @@ function ProjectRepoCard({ repo }: { repo: GitHubRepo }) {
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className="h-full"
     >
-      <Card className="h-full glass-card hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300 flex flex-col">
-        {/* Project Image or Gradient Placeholder */}
-        <div className="aspect-video overflow-hidden rounded-t-lg relative group">
-          {repo.custom_image ? (
-            <img
-              src={repo.custom_image}
-              alt={repo.custom_title || repo.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-          ) : (
-            <div className={`w-full h-full bg-gradient-to-br ${getGradientCategory(repo.ai_category)} flex items-center justify-center group-hover:scale-105 transition-transform duration-500`}>
-              <Code className="w-12 h-12 text-white/30" />
-            </div>
-          )}
-
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
-        </div>
-
-        <CardHeader>
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <Github className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-              <CardTitle className="text-lg line-clamp-1">
-                {repo.custom_title || repo.name}
-              </CardTitle>
-            </div>
-            {repo.is_featured && (
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 flex-shrink-0" />
+      <SpotlightCard glowColor="purple">
+        <Card className="h-full glass-card hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300 flex flex-col">
+          {/* Project Image or Gradient Placeholder */}
+          <div className="aspect-video overflow-hidden rounded-t-lg relative group">
+            {repo.custom_image ? (
+              <img
+                src={repo.custom_image}
+                alt={repo.custom_title || repo.name}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : (
+              <div className={`w-full h-full bg-gradient-to-br ${getGradientCategory(repo.ai_category)} flex items-center justify-center group-hover:scale-105 transition-transform duration-500`}>
+                <Code className="w-12 h-12 text-white/30" />
+              </div>
             )}
+
+            {/* Overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
           </div>
-          {repo.ai_category && (
-            <Badge variant="outline" className={`text-xs w-fit ${categoryClass}`}>
-              {repo.ai_category}
-            </Badge>
-          )}
-        </CardHeader>
 
-        <CardContent className="flex-grow space-y-4">
-          {/* Description */}
-          <p className="text-sm text-muted-foreground line-clamp-3">
-            {repo.custom_description || repo.ai_description || repo.description || "No description available"}
-          </p>
-
-          {/* Tech Stack */}
-          {repo.ai_tech_stack && repo.ai_tech_stack.length > 0 && (
-            <div className="flex flex-wrap gap-1">
-              {repo.ai_tech_stack.slice(0, 5).map((tech, index) => (
-                <Badge key={index} variant="secondary" className="text-xs">
-                  {tech}
-                </Badge>
-              ))}
-              {repo.ai_tech_stack.length > 5 && (
-                <Badge variant="secondary" className="text-xs">
-                  +{repo.ai_tech_stack.length - 5}
-                </Badge>
+          <CardHeader>
+            <div className="flex items-start justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Github className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <CardTitle className="text-lg line-clamp-1">
+                  {repo.custom_title || repo.name}
+                </CardTitle>
+              </div>
+              {repo.is_featured && (
+                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 flex-shrink-0" />
               )}
             </div>
-          )}
+          </CardHeader>
 
-          {/* Key Features */}
-          {repo.ai_key_features && repo.ai_key_features.length > 0 && (
-            <ul className="text-xs text-muted-foreground space-y-1">
-              {repo.ai_key_features.slice(0, 2).map((feature, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-brand-blue">•</span>
-                  <span className="line-clamp-1">{feature}</span>
-                </li>
+          <CardContent className="flex-grow space-y-4">
+            <p className="text-muted-foreground text-sm line-clamp-2">
+              {repo.ai_description || repo.description || "No description available"}
+            </p>
+
+            {/* Category Badge */}
+            <Badge className={`${categoryClass} text-xs`}>
+              {repo.ai_category || "Other"}
+            </Badge>
+
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-1">
+              {repo?.language && (
+                <Badge variant="secondary" className="text-xs">
+                  {repo.language}
+                </Badge>
+              )}
+              {repo?.topics?.slice(0, 3).map((topic: string) => (
+                <Badge key={topic} variant="outline" className="text-xs">
+                  {topic}
+                </Badge>
               ))}
-            </ul>
-          )}
+            </div>
 
-          {/* Stats Row */}
-          <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            {repo.stargazers_count > 0 && (
+            {/* Stats */}
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              {repo.stargazers_count > 0 && (
+                <span className="flex items-center gap-1">
+                  <Star className="w-3 h-3" /> {repo.stargazers_count}
+                </span>
+              )}
+              {repo.forks_count > 0 && (
+                <span className="flex items-center gap-1">
+                  <GitFork className="w-3 h-3" /> {repo.forks_count}
+                </span>
+              )}
               <span className="flex items-center gap-1">
-                <Star className="w-3 h-3 text-yellow-500" />
-                {repo.stargazers_count}
+                <Calendar className="w-3 h-3" />
+                {formatDistanceToNow(new Date(repo.pushed_at), { addSuffix: true })}
               </span>
-            )}
-            {repo.forks_count > 0 && (
-              <span className="flex items-center gap-1">
-                <GitFork className="w-3 h-3" />
-                {repo.forks_count}
-              </span>
-            )}
-            <span className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
-              {formatDistanceToNow(new Date(repo.pushed_at), { addSuffix: true })}
-            </span>
-          </div>
-        </CardContent>
+            </div>
+          </CardContent>
 
-        <CardFooter className="pt-4 border-t border-border">
-          <div className="flex gap-2 w-full">
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex-1">
-              <RainbowButton className="w-full gap-2">
-                <Github className="w-4 h-4" />
-                Code
-              </RainbowButton>
-            </a>
-            {(repo.demo_url || repo.homepage) && (
-              <a href={repo.demo_url || repo.homepage || '#'} target="_blank" rel="noopener noreferrer" className="flex-1">
+          <CardFooter className="pt-4 border-t border-border">
+            <div className="flex gap-2 w-full">
+              <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex-1">
                 <RainbowButton className="w-full gap-2">
-                  <ExternalLink className="w-4 h-4" />
-                  Demo
+                  <Github className="w-4 h-4" />
+                  Code
                 </RainbowButton>
               </a>
-            )}
-          </div>
-        </CardFooter>
-      </Card>
+              {(repo.demo_url || repo.homepage) && (
+                <a href={repo.demo_url || repo.homepage || '#'} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <RainbowButton className="w-full gap-2">
+                    <ExternalLink className="w-4 h-4" />
+                    Demo
+                  </RainbowButton>
+                </a>
+              )}
+            </div>
+          </CardFooter>
+        </Card>
+      </SpotlightCard>
     </motion.div>
   );
 }

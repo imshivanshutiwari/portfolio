@@ -5,6 +5,7 @@ import { Shield, Lock } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Simple admin access (in production, use proper auth)
@@ -38,35 +39,37 @@ export default function Admin() {
                     animate="visible"
                     variants={fadeIn}
                 >
-                    <Card className="w-full max-w-md glass-card">
-                        <CardHeader className="text-center">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue/10 flex items-center justify-center">
-                                <Shield className="w-8 h-8 text-brand-blue" />
-                            </div>
-                            <CardTitle>Admin Access</CardTitle>
-                            <CardDescription>
-                                Enter the admin password to manage your portfolio
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div className="space-y-2">
-                                <Input
-                                    type="password"
-                                    placeholder="Enter admin password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                                />
-                                {error && (
-                                    <p className="text-sm text-destructive">{error}</p>
-                                )}
-                            </div>
-                            <RainbowButton onClick={handleLogin} className="w-full gap-2">
-                                <Lock className="w-4 h-4" />
-                                Access Admin Panel
-                            </RainbowButton>
-                        </CardContent>
-                    </Card>
+                    <SpotlightCard glowColor="blue">
+                        <Card className="w-full max-w-md glass-card">
+                            <CardHeader className="text-center">
+                                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-blue/10 flex items-center justify-center">
+                                    <Shield className="w-8 h-8 text-brand-blue" />
+                                </div>
+                                <CardTitle>Admin Access</CardTitle>
+                                <CardDescription>
+                                    Enter the admin password to manage your portfolio
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <div className="space-y-2">
+                                    <Input
+                                        type="password"
+                                        placeholder="Enter admin password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+                                    />
+                                    {error && (
+                                        <p className="text-sm text-destructive">{error}</p>
+                                    )}
+                                </div>
+                                <RainbowButton onClick={handleLogin} className="w-full gap-2">
+                                    <Lock className="w-4 h-4" />
+                                    Access Admin Panel
+                                </RainbowButton>
+                            </CardContent>
+                        </Card>
+                    </SpotlightCard>
                 </motion.div>
             </div>
         );
