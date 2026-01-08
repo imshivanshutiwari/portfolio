@@ -7,6 +7,7 @@ import GlowingAnimation from "@/components/animations/GlowingAnimation";
 import SocialIcons from "@/components/SocialIcons";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import GitHubProjects from "@/components/GitHubProjects";
+import { GlowingEffectDemo } from "@/components/GlowingEffectDemo";
 
 import { useSystemConfig } from "@/hooks/usePortfolioData";
 
@@ -185,7 +186,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Core Competencies */}
+      {/* Core Competencies with Glowing Effect */}
       <SectionContainer className="bg-card">
         <motion.div
           initial="hidden"
@@ -201,30 +202,10 @@ export default function Home() {
           </motion.h2>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12"
-            variants={staggerChildren}
+            className="mt-12"
+            variants={fadeInUp}
           >
-            {competencies.map((item, index) => (
-              <motion.div
-                key={index}
-                className="glass-card rounded-xl p-6 flex flex-col items-center text-center hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300"
-                variants={fadeInUp}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <motion.div
-                  className="mb-4 p-3 rounded-full bg-secondary"
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 5,
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  {item.icon}
-                </motion.div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </motion.div>
-            ))}
+            <GlowingEffectDemo />
           </motion.div>
         </motion.div>
       </SectionContainer>
