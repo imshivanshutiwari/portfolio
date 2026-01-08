@@ -9,13 +9,43 @@ import GlowingAnimation from "@/components/animations/GlowingAnimation";
 import LinkedInActivitySection from "@/components/LinkedInActivity";
 import DynamicSkills from "@/components/DynamicSkills";
 
-import { useSystemConfig } from "@/hooks/usePortfolioData";
+import { useSystemConfig, useAllProfileContent } from "@/hooks/usePortfolioData";
 
 export default function About() {
   const { data: systemConfig } = useSystemConfig();
+  const { data: profileContent = {} } = useAllProfileContent();
   const profileImage = systemConfig?.profile_image_url || "";
 
-  const education = [
+  // Transform profile_content data to timeline format
+  const education = (profileContent['education'] || []).map(item => ({
+    title: item.title,
+    subtitle: item.organization || item.subtitle || '',
+    period: item.date_start && item.date_end ? `${item.date_start} - ${item.date_end}` : '',
+    description: item.content || '',
+    type: 'education' as const
+  }));
+
+  const experience = (profileContent['experience'] || []).map(item => ({
+    title: item.title,
+    subtitle: item.organization || item.subtitle || '',
+    period: item.date_start ? `${item.date_start} - ${item.date_end || 'Present'}` : '',
+    description: item.content || '',
+    type: 'work' as const
+  }));
+
+  const achievements = (profileContent['achievement'] || []).map(item => ({
+    title: item.title,
+    year: item.date_start || '',
+    description: item.content || ''
+  }));
+
+  // Get about me, vision, mission content
+  const aboutMe = profileContent['about_me']?.[0];
+  const vision = profileContent['vision']?.[0];
+  const mission = profileContent['mission']?.[0];
+
+  // Fallback hardcoded data if no content exists yet
+  const fallbackEducation = [
     {
       title: "M.Tech in Modelling & Simulation",
       subtitle: "Defence Institute of Advanced Technology (DIAT), Pune",
@@ -32,7 +62,7 @@ export default function About() {
     }
   ];
 
-  const experience = [
+  const fallbackExperience = [
     {
       title: "AI Research Lead",
       subtitle: "Defense Innovation Lab",
@@ -49,7 +79,7 @@ export default function About() {
     }
   ];
 
-  const achievements = [
+  const fallbackAchievements = [
     {
       title: "Reliance Foundation Scholar",
       year: "2022",
@@ -67,12 +97,10 @@ export default function About() {
     }
   ];
 
-  const skills = [
-    "Artificial Intelligence", "Machine Learning", "Computer Vision",
-    "Defense Systems Integration", "LLM Engineering", "Embedded AI",
-    "Autonomous Systems", "Secure Computing", "Robotics & Control",
-    "Multi-modal Intelligence", "Signal Processing", "Systems Architecture"
-  ];
+  // Use database data if available, otherwise fallback
+  const displayEducation = education.length > 0 ? education : fallbackEducation;
+  const displayExperience = experience.length > 0 ? experience : fallbackExperience;
+  const displayAchievements = achievements.length > 0 ? achievements : fallbackAchievements;
 
   // Animation variants
   const fadeIn = {
@@ -262,8 +290,8 @@ export default function About() {
 
       {/* Timeline Sections */}
       <SectionContainer>
-        <TimelineSection title="Experience" items={experience} />
-        <TimelineSection title="Education" items={education} />
+        <TimelineSection title="Experience" items={displayExperience} />
+        <TimelineSection title="Education" items={displayEducation} />
       </SectionContainer>
 
       {/* Achievements with Animations */}
@@ -284,7 +312,7 @@ export default function About() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8"
             variants={staggerContainer}
           >
-            {achievements.map((item, index) => (
+            {displayAchievements.map((item, index) => (
               <motion.div
                 key={index}
                 className="glass-card rounded-xl p-6 hover:shadow-lg transition-all duration-300"

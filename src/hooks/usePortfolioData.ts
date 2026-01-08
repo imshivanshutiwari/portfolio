@@ -592,3 +592,79 @@ export const useUpdateSystemConfig = () => {
         }
     });
 };
+
+// ============================================
+// PROFILE CONTENT HOOKS
+// ============================================
+
+export interface ProfileContentItem {
+    id: string;
+    section_type: string;
+    title: string;
+    subtitle: string | null;
+    content: string | null;
+    icon_name: string | null;
+    date_start: string | null;
+    date_end: string | null;
+    location: string | null;
+    organization: string | null;
+    url: string | null;
+    tags: string[];
+    display_order: number;
+    is_visible: boolean;
+    metadata: Record<string, any>;
+}
+
+export const useProfileContent = (sectionType?: string) => {
+    return useQuery({
+        queryKey: ['profile-content', sectionType],
+        queryFn: async (): Promise<ProfileContentItem[]> => {
+            let query = supabase
+                .from('profile_content')
+                .select('*')
+                .eq('is_visible', true)
+                .order('display_order', { ascending: true });
+
+            if (sectionType) {
+                query = query.eq('section_type', sectionType);
+            }
+
+            const { data, error } = await query;
+
+            if (error) {
+                console.error('Error fetching profile content:', error);
+                throw error;
+            }
+
+            return (data as any[]) || [];
+        },
+    });
+};
+
+export const useAllProfileContent = () => {
+    return useQuery({
+        queryKey: ['profile-content-all'],
+        queryFn: async (): Promise<Record<string, ProfileContentItem[]>> => {
+            const { data, error } = await supabase
+                .from('profile_content')
+                .select('*')
+                .eq('is_visible', true)
+                .order('display_order', { ascending: true });
+
+            if (error) {
+                console.error('Error fetching all profile content:', error);
+                throw error;
+            }
+
+            // Group by section_type
+            const grouped: Record<string, ProfileContentItem[]> = {};
+            for (const item of (data as any[]) || []) {
+                const section = item.section_type || 'other';
+                if (!grouped[section]) grouped[section] = [];
+                grouped[section].push(item);
+            }
+
+            return grouped;
+        },
+    });
+};
