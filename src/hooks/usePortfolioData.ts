@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 // ============================================
@@ -642,6 +643,32 @@ export const useProfileContent = (sectionType?: string) => {
 };
 
 export const useAllProfileContent = () => {
+    const queryClient = useQueryClient();
+
+    // Set up real-time subscription
+    useEffect(() => {
+        const channel = supabase
+            .channel('profile_content_changes')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'profile_content'
+                },
+                () => {
+                    // Invalidate and refetch when any change happens
+                    queryClient.invalidateQueries({ queryKey: ['profile-content-all'] });
+                    queryClient.invalidateQueries({ queryKey: ['profile-content'] });
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [queryClient]);
+
     return useQuery({
         queryKey: ['profile-content-all'],
         queryFn: async (): Promise<Record<string, ProfileContentItem[]>> => {
