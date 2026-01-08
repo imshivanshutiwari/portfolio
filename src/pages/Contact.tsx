@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Send, Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react";
 import SectionContainer from "@/components/SectionContainer";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ContactAnimation from "@/components/animations/ContactAnimation";
@@ -268,7 +269,7 @@ export default function Contact() {
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
-                <Button type="submit" disabled={isSubmitting} className="w-full">
+                <RainbowButton type="submit" disabled={isSubmitting} className="w-full">
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -283,7 +284,7 @@ export default function Contact() {
                       Send Message
                     </span>
                   )}
-                </Button>
+                </RainbowButton>
               </motion.div>
             </motion.form>
           </motion.div>

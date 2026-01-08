@@ -1,8 +1,8 @@
-
 import { Book, Award, Briefcase, GanttChart } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionContainer from "@/components/SectionContainer";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import { Separator } from "@/components/ui/separator";
 import TimelineSection from "@/components/TimelineSection";
 import GlowingAnimation from "@/components/animations/GlowingAnimation";
@@ -197,9 +197,9 @@ export default function About() {
                 className="flex flex-wrap gap-4 mt-8"
                 variants={fadeInUp}
               >
-                <Button asChild>
-                  <a href="/contact">Get in Touch</a>
-                </Button>
+                <a href="/contact">
+                  <RainbowButton>Get in Touch</RainbowButton>
+                </a>
                 <Button asChild variant="outline">
                   <a href="/projects">View My Work</a>
                 </Button>

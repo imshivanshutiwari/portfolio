@@ -1,5 +1,6 @@
 import { ArrowRight, DownloadCloud, UserCircle, BrainCircuit, Target, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 import SectionContainer from "@/components/SectionContainer";
 import ProjectCard from "@/components/ProjectCard";
 import { motion } from "framer-motion";
@@ -134,12 +135,12 @@ export default function Home() {
                 className="flex flex-wrap gap-4 mb-8"
                 variants={fadeInUp}
               >
-                <Button asChild size="lg" className="gap-2">
-                  <a href="/projects">
+                <a href="/projects">
+                  <RainbowButton className="gap-2">
                     Explore Portfolio
                     <ArrowRight size={18} />
-                  </a>
-                </Button>
+                  </RainbowButton>
+                </a>
 
                 <Button asChild variant="outline" size="lg" className="gap-2">
                   <a href="/resume">
