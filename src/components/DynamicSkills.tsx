@@ -105,8 +105,8 @@ function SkillCard({ skill }: { skill: Skill }) {
                                         <div
                                             key={level}
                                             className={`w-2 h-2 rounded-full transition-colors ${level <= proficiency
-                                                    ? 'bg-brand-blue'
-                                                    : 'bg-muted'
+                                                ? 'bg-brand-blue'
+                                                : 'bg-muted'
                                                 }`}
                                         />
                                     ))}
@@ -155,17 +155,17 @@ function SkillCategoryCard({ category, skills }: { category: string; skills: Ski
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="space-y-2"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2"
                 >
-                    {skills.slice(0, 8).map((skill) => (
+                    {skills.slice(0, 16).map((skill) => (
                         <SkillCard key={skill.id} skill={skill} />
                     ))}
-                    {skills.length > 8 && (
-                        <p className="text-xs text-muted-foreground text-center pt-2">
-                            + {skills.length - 8} more skills
-                        </p>
-                    )}
                 </motion.div>
+                {skills.length > 16 && (
+                    <p className="text-xs text-muted-foreground text-center pt-3">
+                        + {skills.length - 16} more skills
+                    </p>
+                )}
             </CardContent>
         </Card>
     );
@@ -304,7 +304,11 @@ export default function DynamicSkills({ variant = 'full', maxCategories }: Dynam
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
                 {displayCategories.map(([category, skills]) => (
-                    <motion.div key={category} variants={fadeIn}>
+                    <motion.div
+                        key={category}
+                        variants={fadeIn}
+                        className={displayCategories.length === 1 ? "col-span-full" : ""}
+                    >
                         <SkillCategoryCard category={category} skills={skills} />
                     </motion.div>
                 ))}
