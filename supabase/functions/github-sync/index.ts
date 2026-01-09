@@ -103,26 +103,62 @@ Return ONLY a valid JSON object (no markdown, no code blocks):
 // Fallback analysis without AI
 function getDefaultAnalysis(repo: GitHubRepo, languages: Record<string, number>): AIAnalysis {
   const topLanguages = Object.keys(languages).slice(0, 5)
+  const primaryLanguage = topLanguages[0] || ''
 
   let category = 'Other'
   const desc = (repo.description || '').toLowerCase()
+  const name = repo.name.toLowerCase()
   const topics = (repo.topics || []).map(t => t.toLowerCase())
+  const allText = `${desc} ${name} ${topics.join(' ')}`
 
-  if (topics.includes('machine-learning') || topics.includes('ml') || desc.includes('machine learning')) {
+  // Better categorization logic
+  if (topics.includes('machine-learning') || topics.includes('ml') || topics.includes('deep-learning') ||
+    topics.includes('artificial-intelligence') || topics.includes('ai') ||
+    allText.includes('machine learning') || allText.includes('neural') || allText.includes('tensorflow') ||
+    allText.includes('pytorch') || allText.includes('keras') || allText.includes('model training')) {
     category = 'Machine Learning'
-  } else if (topics.includes('computer-vision') || desc.includes('vision') || desc.includes('image')) {
+  } else if (topics.includes('computer-vision') || topics.includes('opencv') || topics.includes('yolo') ||
+    allText.includes('vision') || allText.includes('image recognition') || allText.includes('object detection') ||
+    allText.includes('face detection') || allText.includes('opencv') || allText.includes('yolo')) {
     category = 'Computer Vision'
-  } else if (topics.includes('nlp') || desc.includes('nlp') || desc.includes('language')) {
+  } else if (topics.includes('nlp') || topics.includes('natural-language-processing') || topics.includes('llm') ||
+    allText.includes('nlp') || allText.includes('language model') || allText.includes('text generation') ||
+    allText.includes('chatbot') || allText.includes('gpt') || allText.includes('transformer')) {
     category = 'NLP'
-  } else if (topics.includes('web') || topLanguages.includes('JavaScript') || topLanguages.includes('TypeScript')) {
+  } else if (topics.includes('web') || topics.includes('website') || topics.includes('react') ||
+    topics.includes('nextjs') || topics.includes('frontend') || topics.includes('backend') ||
+    topLanguages.includes('JavaScript') || topLanguages.includes('TypeScript') ||
+    topLanguages.includes('HTML') || topLanguages.includes('CSS') ||
+    allText.includes('web') || allText.includes('website') || allText.includes('frontend') ||
+    allText.includes('dashboard') || allText.includes('portfolio') || allText.includes('react')) {
     category = 'Web Development'
-  } else if (topics.includes('data') || desc.includes('data')) {
+  } else if (topics.includes('data') || topics.includes('data-science') || topics.includes('analytics') ||
+    topics.includes('etl') || topics.includes('pipeline') ||
+    allText.includes('data') || allText.includes('analytics') || allText.includes('pipeline') ||
+    allText.includes('etl') || allText.includes('bigdata')) {
     category = 'Data Engineering'
+  } else if (topics.includes('devops') || topics.includes('docker') || topics.includes('kubernetes') ||
+    topics.includes('ci-cd') || topics.includes('infrastructure') ||
+    allText.includes('devops') || allText.includes('docker') || allText.includes('kubernetes') ||
+    allText.includes('deployment') || allText.includes('infrastructure')) {
+    category = 'DevOps'
+  } else if (topics.includes('research') || topics.includes('paper') || topics.includes('academic') ||
+    allText.includes('research') || allText.includes('paper') || allText.includes('thesis') ||
+    allText.includes('experiment')) {
+    category = 'Research'
+  } else if (topics.includes('mobile') || topics.includes('android') || topics.includes('ios') ||
+    topics.includes('flutter') || topics.includes('react-native') ||
+    topLanguages.includes('Kotlin') || topLanguages.includes('Swift') || topLanguages.includes('Dart')) {
+    category = 'Mobile'
+  } else if (topLanguages.includes('Python')) {
+    category = 'Python'
+  } else if (topLanguages.includes('C++') || topLanguages.includes('C') || topLanguages.includes('Rust')) {
+    category = 'Systems'
   }
 
   return {
     category,
-    description: repo.description || `A ${category.toLowerCase()} project built with ${topLanguages.join(', ')}`,
+    description: repo.description || `A ${category.toLowerCase()} project built with ${topLanguages.join(', ') || 'various technologies'}`,
     techStack: topLanguages,
     isPortfolioWorthy: repo.stargazers_count > 0 || !repo.fork,
     keyFeatures: [],
