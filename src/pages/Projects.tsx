@@ -10,6 +10,7 @@ import { useGitHubRepos, usePortfolioWorthyRepos, useTriggerGitHubSync, GitHubRe
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDistanceToNow } from "date-fns";
+import { useToast } from "@/hooks/use-toast";
 
 // Category color mapping for badges
 const categoryColors: Record<string, string> = {
@@ -152,11 +153,28 @@ function ProjectRepoCard({ repo }: { repo: GitHubRepo }) {
 export default function Projects() {
   const { data: repos = [], isLoading, error } = useGitHubRepos();
   const triggerSync = useTriggerGitHubSync();
+  const { toast } = useToast();
 
   const handleSync = () => {
+    toast({
+      title: "Syncing...",
+      description: "Fetching repositories from GitHub",
+    });
+
     triggerSync.mutate(undefined, {
-      onSuccess: () => {
-        // Query invalidation handles refetch
+      onSuccess: (data) => {
+        toast({
+          title: "Sync Complete!",
+          description: `Found ${data?.repos_found || 0} repos. Added ${data?.items_added || 0}, updated ${data?.items_updated || 0}.`,
+        });
+      },
+      onError: (error: any) => {
+        console.error('GitHub sync error:', error);
+        toast({
+          title: "Sync Failed",
+          description: error?.message || "Failed to sync with GitHub. Please check admin settings.",
+          variant: "destructive",
+        });
       }
     });
   };
