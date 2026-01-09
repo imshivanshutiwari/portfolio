@@ -1,0 +1,20 @@
+name: Daily GitHub Sync
+
+on:
+  schedule:
+    # Runs at 6 AM UTC (11:30 AM IST) every day
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger GitHub Sync
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            "${{ secrets.SUPABASE_URL }}/functions/v1/github-sync" \
+            -d '{}'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
