@@ -204,11 +204,9 @@ Deno.serve(async (req) => {
       githubUsername = config?.value
     }
 
+    // Default fallback if no username configured
     if (!githubUsername) {
-      return new Response(
-        JSON.stringify({ error: 'GitHub username not configured' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
+      githubUsername = 'imshivanshutiwari'
     }
 
     // Create sync log entry
